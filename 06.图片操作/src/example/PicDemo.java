@@ -9,9 +9,9 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 public class PicDemo {
-	private static void splitImage(String originalImg) throws IOException {
+	private static void splitImage() throws IOException {
 		 
-        //String originalImg = "C:\\img\\split\\a380_1280x1024.jpg";
+        String originalImg = "C:\\img\\split\\a380_1280x1024.jpg";
         //String originalImg = "D:\\img\\demo.jpeg";
         // ∂¡»Î¥ÛÕº
         File file = new File(originalImg);
@@ -57,6 +57,7 @@ public class PicDemo {
 	
 	
 	public static void main(String[] args) throws IOException {
-		splitImage();
+		//splitImage();
+		//Test.test();
 	}
 }
