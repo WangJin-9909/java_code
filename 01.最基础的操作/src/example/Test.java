@@ -1,8 +1,12 @@
 package example;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class Test {
 	public static void main(String[] args) {
-		intArrToStr();
+		// intArrToStr();
+		test1();
 	}
 
 	// Êý×é×ª×Ö·û´®
@@ -13,6 +17,15 @@ public class Test {
 			str += arr[i];
 		}
 		return str;
-		//System.out.println("str = " + str); // abc
+		// System.out.println("str = " + str); // abc
+	}
+
+	public static void test1() {
+		Date date = new Date();
+		System.out.println(date.getTime());
+		String str = "yyy-MM-dd HH:mm:ss";
+		SimpleDateFormat sdf = new SimpleDateFormat(str);
+		System.out.println(sdf.format(date));
+
 	}
 }

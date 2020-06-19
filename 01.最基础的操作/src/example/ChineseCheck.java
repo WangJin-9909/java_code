@@ -9,18 +9,14 @@ import java.util.regex.Pattern;
 public class ChineseCheck {
 
     public static void main(String[] args) {
-        String str = "Hello! 《满江红》";
-        System.out.println("==> " + isContainChinese(str));
+        String str = "1591694372072|{\"realname王flag\":\"1\",\"custphonenum\":\"\",\"defaultphonenum\":\"\",\"cisno\":\"\",\"userid\":\"\",\"deviceId\":\"357404071198314-35E2442CB7BF7E80\"}";
+        System.out.println("str = " + str.length());
+    	System.out.println("==> " + isContainChinese(str));
+    	  //单字符匹配测试
+    	//System.out.println("==> " + isConChinese(str));
     }
-
-    /**
-     * 字符串是否包含中文
-     * @param str 待校验字符串
-     * @return true 包含中文字符 false 不包含中文字符
-     */
     public static boolean isContainChinese(String str) {
-
-        Pattern p = Pattern.compile("[\u4E00-\u9FA5|\\！|\\，|\\。|\\（|\\）|\\《|\\》|\\“|\\”|\\？|\\：|\\；|\\【|\\】]");
+        Pattern p = Pattern.compile("[^\\x00-\\xff]");
         Matcher m = p.matcher(str);
         if (m.find()) {
             return true;
@@ -28,4 +24,18 @@ public class ChineseCheck {
         return false;
     }
 
+    
+    public static boolean isConChinese(String str) {
+    	Pattern p = Pattern.compile("[\u4E00-\u9FA5|\\！|\\，|\\。|\\（|\\）|\\《|\\》|\\“|\\”|\\？|\\：|\\；|\\【|\\】]");
+        for(int i  = 0; i < str.length(); i++) {
+        	Matcher m = p.matcher(str.charAt(i)+ "");
+        	if (m.find()) {
+                 if(str.charAt(i) == '|' ) {
+                	continue;
+                }
+                return true;
+            }
+        }
+        return false;
+    }
 }
