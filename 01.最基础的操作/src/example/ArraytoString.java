@@ -3,7 +3,12 @@ package example;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class Test {
+/**
+ * 数组字符串之间相互转换
+ * @author wangJin
+ *
+ */
+public class ArraytoString {
 	public static void main(String[] args) {
 		// intArrToStr();
 		test1();
