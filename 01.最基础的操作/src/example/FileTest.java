@@ -10,41 +10,49 @@ import java.io.IOException;
 public class FileTest {
 
 	public static void main(String[] args) throws IOException {
-		// findFileList("D:\\");
-		while (true) {
-			readFile("D:\\03.workspace\\01.server\\TestHttpProtocolNew\\demo.jpeg");
-		}
+		//1.ï¿½ï¿½ï¿½ï¿½Â·ï¿½ï¿½
+		//findFileList("D:\\");
+		//2.ï¿½ï¿½ï¿½ï¿½Â·ï¿½ï¿½
+		findFileList("https://129.28.184.240:8443/sensor_update/");
+//		while (true) {
+//			readFile("D:\\03.workspace\\01.server\\TestHttpProtocolNew\\demo.jpeg");
+//		}
+		
+		
 
 	}
 
 	/**
-	 * ¶ÁÈ¡Ä¿Â¼ÏÂµÄËùÓÐÎÄ¼þ
+	 * ï¿½ï¿½È¡Ä¿Â¼ï¿½Âµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½
 	 * 
-	 * @param dir       Ä¿Â¼
-	 * @param fileNames ±£´æÎÄ¼þÃûµÄ¼¯ºÏ
+	 * @param dir
 	 * @return
 	 */
-	public static void findFileList(String path) {
-		File dir = new File(path);
-		if (!dir.exists() || !dir.isDirectory()) {// ÅÐ¶ÏÊÇ·ñ´æÔÚÄ¿Â¼
-			return;
-		}
-		String[] files = dir.list();// ¶ÁÈ¡Ä¿Â¼ÏÂµÄËùÓÐÄ¿Â¼ÎÄ¼þÐÅÏ¢
-		for (int i = 0; i < files.length; i++) {// Ñ­»·£¬Ìí¼ÓÎÄ¼þÃû»ò»Øµ÷×ÔÉí
-			File file = new File(dir, files[i]);
-			if (file.isFile()) {// Èç¹ûÎÄ¼þ
-				System.out.println("file = " + file);
-			} else {// Èç¹ûÊÇÄ¿Â¼
+	public static void findFileList(String filePath) {
+		File dest = new File(filePath);
 
+		// Ä¿Â¼
+		if (dest.exists() || dest.isDirectory()) {
+			String[] files = dest.list();// ï¿½ï¿½È¡Ä¿Â¼ï¿½Âµï¿½ï¿½ï¿½ï¿½ï¿½Ä¿Â¼ï¿½Ä¼ï¿½ï¿½ï¿½Ï¢
+			for (int i = 0; i < files.length; i++) {// Ñ­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½Øµï¿½ï¿½ï¿½ï¿½ï¿½
+				File file = new File(dest, files[i]);
+				if (file.isFile()) {// ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½
+					System.out.println("file = " + file);
+				} else {// ï¿½ï¿½ï¿½ï¿½ï¿½Ä¿Â¼
+
+				}
 			}
+		} else if (dest.exists() || !dest.isDirectory()) {
+
 		}
+
 	}
 
 	public static void readFile(String path) throws IOException {
 		try (FileReader reader = new FileReader(path); BufferedReader br = new BufferedReader(reader)) {
 			String line;
 			while ((line = br.readLine()) != null) {
-				// Ò»´Î¶ÁÈëÒ»ÐÐÊý¾Ý
+				// Ò»ï¿½Î¶ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 				System.out.println(line);
 			}
 		} catch (IOException e) {
